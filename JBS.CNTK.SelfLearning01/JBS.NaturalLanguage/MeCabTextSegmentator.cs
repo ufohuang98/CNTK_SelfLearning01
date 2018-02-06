@@ -11,7 +11,6 @@ namespace JBS.NaturalLanguage
     {
         public List<string> Split(string text, bool containIsNotPhraseStart = true)
         {
-            //Console.WriteLine($"分かち書き前 {text}");
             var outputWordList = SplitDocumentsWithMeCab(text, containIsNotPhraseStart);         
             return outputWordList.ToList();
         }
@@ -39,8 +38,8 @@ namespace JBS.NaturalLanguage
                 // BOS/EOS(開始、終端)を除去する
                 if ("EOS" == featureElements[0]
                     || String.IsNullOrWhiteSpace(featureElements[0])
-                    || containIsNotPhrageStart && "助詞" == featureElements[1]
-                    || containIsNotPhrageStart && "助動詞" == featureElements[1]
+                   // || containIsNotPhrageStart && "助詞" == featureElements[1]
+                   // || containIsNotPhrageStart && "助動詞" == featureElements[1]
                     || containIsNotPhrageStart && "記号" == featureElements[1])
                 {
                     continue;
