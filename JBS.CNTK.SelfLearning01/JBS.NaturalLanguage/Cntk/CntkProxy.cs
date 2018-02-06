@@ -27,7 +27,7 @@ namespace JBS.ChatBot.Cntk
                 var cntkInputVar = modelFunc.Arguments.First();
                 var vocabSize = cntkInputVar.Shape.TotalSize; // サイズを取得（テンソルをフラットにした時の形）
                 // 入力ベクトルのサイズ、シーケンス、シーケンス先頭フラグ、デバイス
-                var inputSequence = Value.CreateSequence<float>(vocabSize, inputVector.Select(x => x).ToList(), descriptor, true);
+                var inputSequence = Value.CreateSequence<float>(vocabSize, inputVector, descriptor, true);
                 return this.Evaluate(modelFunc, cntkInputVar, inputSequence, descriptor);
             }
         }
@@ -47,14 +47,15 @@ namespace JBS.ChatBot.Cntk
             {
                 { outputVar, null }
             };
-
             // 評価実行
             model.Evaluate(inputDataMap, outputDataMap, descriptor); 
 
             // 出力オブジェクトとデータのマップから出力データを取り出す
-            Value evalResult = outputDataMap[outputVar]; 
-            var output=evalResult.GetDenseData<float>(outputVar);
+            Value evalResult = outputDataMap[outputVar];
+
+            var output=evalResult.GetDenseData<float>( outputVar);
             return (List<float>)output[0];
+            
         }
     }
 }
