@@ -27,7 +27,6 @@ namespace JBS.ChatBot.Batch
                 }
                 CntkTopic topic = topicStore.GetOrRegister(row.Label);
                 // クレンジングをかけつつ単語収集
-                //string cleanedSentence = textTransformBefore.Transform(row.Sentence);
                 List<string> words = segmentator.Split(row.Sentence);
 
                 words.ForEach(w => corpus.Add(w));
@@ -42,7 +41,6 @@ namespace JBS.ChatBot.Batch
 
             // 取り込む単語が全て確定しないとVector表現が決まらないので、そこだけ最後
             var space = OneHotWordVectorSpace.Build(corpus);
-
             foreach (var sentence in sentences)
             {
 

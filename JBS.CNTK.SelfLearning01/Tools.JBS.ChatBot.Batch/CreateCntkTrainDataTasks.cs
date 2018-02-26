@@ -30,7 +30,7 @@ namespace JBS.ChatBot.Batch
         public void Run()
         {
 
-            // import train dataset
+            // 学習データの取り込み
             string dataSetFilePath = @"Resource\train_dataset.tsv";//context.BaseContext.TrainDataSetPath();
             DataSet data = this.dataSetImport.Import(dataSetFilePath);
 
