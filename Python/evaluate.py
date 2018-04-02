@@ -31,7 +31,7 @@ def load_eval_data():
             num_output_classes=int(json_data['labelDimension'])
             print("input_dim:",input_dim)
             
-    rel_path = r"data\cntk_train_data.tsv"
+    rel_path = r"data\cntk_eval_data.tsv"
     path = os.path.join(os.path.dirname(os.path.abspath(__file__)), rel_path)
     print("filepath:",path)
     reader = create_reader(path, False, input_dim, num_output_classes)
@@ -40,7 +40,7 @@ def load_eval_data():
 
 
 def load_model():
-    model=cntk.Function.load(os.path.join(abs_path, ".", "Models","lstm_model_epoch11.dnn"))
+    model=cntk.Function.load(os.path.join(abs_path, ".", "Models","lstm_model_epoch10.dnn"))
     return model
 
 def evaluate(reader, model,input_dim,num_output_classes):

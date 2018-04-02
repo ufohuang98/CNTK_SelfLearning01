@@ -92,7 +92,7 @@ def train_sequence_classifier():
         if samples >= epoch_size*epoch:           #毎epochトレーニング完了後モデルを保存
             classifier_output.save(os.path.join(abs_path,".","Models","lstm_model_epoch{}.dnn".format(epoch)))
             epoch += 1
-        if epoch >epoch_max+1:
+        if epoch >epoch_max:
             break
         loop_count += 1
 

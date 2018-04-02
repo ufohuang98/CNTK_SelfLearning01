@@ -40,8 +40,8 @@ namespace JBS.ChatBot.Batch.Services
         {
             var trainSentences = new List<CntkSentence>();
             var evalSentences = new List<CntkSentence>();
-            string trainOutputPath = @"Data\train_data.tsv";
-            string evalOutputPath = @"Eval\eval_data.tsv";
+            string trainOutputPath = @"Data\cntk_train_data.tsv";
+            string evalOutputPath = @"Eval\cntk_eval_data.tsv";
             var n = sentences.Count / 10;
             Random ra = new Random();
             var list = new List<int>();
